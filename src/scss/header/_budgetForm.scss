@@ -1,0 +1,57 @@
+@use "../base/variables"as v;
+@use "../base/mixins"as m;
+
+.budget-form {
+  background-color: v.$white;
+  border-radius: .5rem;
+  padding: 5rem 3rem;
+  box-shadow: 5px 5px 15px 5px hsla(210, 4%, 11%, 0.150);
+  font-weight: 500;
+  color: v.$trueBlue;
+
+  @include m.min_tablet {
+    padding: 5rem 10rem;
+  }
+
+  // position in absolute method
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 15rem;
+  // bottom: 0;
+  // margin: auto;
+
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+
+    label {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 5rem;
+    }
+
+    // fields
+    input:not([type="submit"]) {
+      padding: 1rem 0;
+      line-height: 2rem;
+      border: none;
+      border-bottom: solid 2px v.$trueBlue;
+      outline: none;
+      color: lighten($color: v.$trueBlue, $amount: 5%);
+
+      &::placeholder {
+        color: lighten($color: v.$trueBlue, $amount: 30%);
+      }
+
+    }
+  }
+
+  // button budget form
+  .button-budget {
+    @include m.button_input(v.$trueBlue, v.$white, "block");
+  }
+
+}
