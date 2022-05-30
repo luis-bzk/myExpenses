@@ -1,0 +1,51 @@
+@use "../base/variables"as v;
+@use "../base/mixins"as m;
+
+.control-budget {
+  background-color: v.$white;
+  border-radius: .5rem;
+  padding: 5rem 3rem;
+  color: v.$black;
+  box-shadow: 5px 5px 15px 5px hsla(210, 4%, 11%, 0.150);
+  display: flex;
+
+  // columns
+  @include m.max_tablet {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  @include m.min_tablet {
+    padding: 3rem 2rem;
+    @include m.grid(2, 2rem)
+  }
+
+  // position in absolute method
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 15rem;
+
+
+  .budget-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
+    span {
+      color: v.$trueBlue;
+      font-weight: 500;
+    }
+  }
+
+  .budget-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lighten($color: v.$plumpPurple, $amount: 35%);
+  }
+
+
+}

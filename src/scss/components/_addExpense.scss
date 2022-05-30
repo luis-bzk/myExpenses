@@ -1,0 +1,22 @@
+@use "../base/_variables.scss"as v;
+
+.add-expense {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  // border-radius: 5rem;
+  background-color: transparent;
+
+  .expense-button {
+    color: v.$purple;
+    font-size: 4rem;
+
+    transition: .2s;
+
+    &:hover {
+      cursor: pointer;
+      // box-shadow: 3px 3px 5px 3px rgba(45, 44, 48, 0.379);
+      transform: scale(0.9);
+    }
+  }
+}

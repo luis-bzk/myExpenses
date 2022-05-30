@@ -1,0 +1,31 @@
+@use "../base/variables"as v;
+@use "../base/mixins"as m;
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(21, 21, 23, 0.576);
+
+
+  // div with icon to close the modal
+  .close-modal {
+    color: v.$white;
+    font-size: 4rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    // transition-property: color;
+    // transition-delay: .3s;
+    transition: .2s;
+
+    &:hover {
+      cursor: pointer;
+      color: v.$fieryRose;
+    }
+  }
+
+
+}

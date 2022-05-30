@@ -1,0 +1,15 @@
+@use "../base/variables"as v;
+@use "../base/mixins"as m;
+
+.alert {
+  margin-top: 1rem;
+  padding: 2rem 1rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  color: v.$black;
+
+  &.error {
+    border: .3rem solid lighten($color: v.$red, $amount: 25%);
+    background-color: lighten($color: v.$red, $amount: 40%);
+  }
+}
