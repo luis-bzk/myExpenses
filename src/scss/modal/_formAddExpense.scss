@@ -2,18 +2,18 @@
 @use "../base/mixins"as m;
 
 .form-add-expense {
-  // position
+  // position during the aparition form
   transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: ease-in;
   opacity: 0;
-  background-color: v.$white;
 
   // styles
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 3rem;
+  background-color: v.$white;
+  padding: 2rem;
   border-radius: .5rem;
 
   @include m.min_tablet {
@@ -30,7 +30,10 @@
 
   // return opacity in modal, post-> close modal
   &.close {
+    position: relative;
     opacity: 0;
+    top: 50%;
+    transform: translateY(50%);
   }
 
   // leend style (title??)
@@ -38,7 +41,7 @@
     text-align: center;
     font-size: 2rem;
     font-weight: 500;
-    color: v.$trueBlue;
+    color: v.$grayTrueBlue;
   }
 
   // style in a field
@@ -49,11 +52,12 @@
 
     label {
       font-weight: 500;
-      color: v.$plumpPurple;
+      color: v.$grayTrueBlue;
     }
 
     input,
     select {
+      color: v.$darkGray;
       border: none;
       border-bottom: 1px solid lighten($color: v.$darkTrueBlue, $amount: 30%);
       outline: none;

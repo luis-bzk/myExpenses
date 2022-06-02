@@ -1,0 +1,133 @@
+@use "../base/variables"as v;
+@use "../base/mixins"as m;
+
+.expenses-list {
+  @include m.max_tablet {
+    margin-top: 25rem;
+
+  }
+
+  margin-top: 15rem;
+  margin-bottom: 5rem;
+
+}
+
+.expense {
+  display: flex;
+  border-radius: 1rem;
+  padding: 2rem 3rem;
+  background-color: v.$white;
+  margin: 2rem 0;
+  justify-content: space-between;
+  align-items: center;
+
+  // align items in smartphone
+  @include m.max_tablet {
+    padding: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  // content
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .category-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 7rem;
+      width: 7rem;
+      border-radius: 10rem;
+
+      .FAI-icon {
+        font-size: 3rem;
+        color: v.$white;
+      }
+
+      &.savings {
+        background-color: v.$savings;
+      }
+
+      &.food {
+        background-color: v.$food;
+      }
+
+      &.hygiene {
+        background-color: v.$hygiene;
+      }
+
+      &.house {
+        background-color: v.$house;
+      }
+
+      &.water {
+        background-color: v.$water;
+      }
+
+      &.light {
+        background-color: v.$light;
+      }
+
+      &.internet {
+        background-color: v.$internet;
+      }
+
+      &.entertainment {
+        background-color: v.$entertainment;
+      }
+
+      &.health {
+        background-color: v.$health;
+      }
+
+      &.otherExpenses {
+        background-color: v.$otherExpenses;
+      }
+
+    }
+  }
+
+
+
+  // content description
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  // inside description
+  &__category {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: v.$darkGray;
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 500;
+    color: v.$secondBlue;
+  }
+
+  &__date {
+    color: v.$darkGray;
+    font-weight: 500;
+
+    span {
+      font-weight: 300;
+      color: v.$darkTrueBlue;
+    }
+  }
+
+  // NOT inside precio
+  &__amount {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: v.$green;
+  }
+}

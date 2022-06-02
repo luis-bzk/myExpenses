@@ -7,7 +7,7 @@
   padding: 5rem 3rem;
   box-shadow: 5px 5px 15px 5px hsla(210, 4%, 11%, 0.150);
   font-weight: 500;
-  color: v.$trueBlue;
+  color: v.$secondBlue;
 
   @include m.min_tablet {
     padding: 5rem 10rem;
@@ -38,12 +38,12 @@
       padding: 1rem 0;
       line-height: 2rem;
       border: none;
-      border-bottom: solid 2px v.$trueBlue;
+      border-bottom: solid 2px v.$blue;
       outline: none;
-      color: lighten($color: v.$trueBlue, $amount: 5%);
+      color: darken($color: v.$blue, $amount: 5%);
 
       &::placeholder {
-        color: lighten($color: v.$trueBlue, $amount: 30%);
+        color: darken($color: v.$blue, $amount: 10%);
       }
 
     }
@@ -51,7 +51,7 @@
 
   // button budget form
   .button-budget {
-    @include m.button_input(v.$trueBlue, v.$white, "block");
+    @include m.button_input(v.$blue, v.$white, "block");
   }
 
 }

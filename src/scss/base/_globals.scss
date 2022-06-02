@@ -23,6 +23,7 @@ body {
 
     &::-webkit-scrollbar-thumb {
         border-radius: 1rem;
+        background-color: v.$darkGray;
     }
 }
 

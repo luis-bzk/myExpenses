@@ -1,8 +1,10 @@
 // import use state
 import { useState } from "react";
-// import "./App.css";
+// import modules
 import Header from "./components/Header";
 import Modal from "./components/Modal";
+import ExpensesList from "./components/ExpensesList";
+import { idGenerator } from "./helpers/helpers";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
@@ -15,12 +17,28 @@ function App() {
   const [modal, setModal] = useState(false);
   const [modalAnimation, setModalAnimation] = useState(false);
 
-  // functions
+  const [expenses, setExpenses] = useState([]);
+
+  // function - button to open a modal, add new expense
   const handleNewExpense = () => {
     setModal(true);
 
     setTimeout(() => {
       setModalAnimation(true);
+    }, 100);
+  };
+
+  // function - to save a new expense
+  const saveExpense = (myExpense) => {
+    myExpense.expenseId = idGenerator();
+    myExpense.expenseDate = Date.now();
+    setExpenses([...expenses, myExpense]);
+
+    // close modal
+    setModalAnimation(false);
+
+    setTimeout(() => {
+      setModal(false);
     }, 500);
   };
 
@@ -35,9 +53,17 @@ function App() {
 
       {/* add expense icon if set a budget */}
       {isValidBudget && (
-        <div className="add-expense" onClick={handleNewExpense}>
-          <FontAwesomeIcon icon={faCirclePlus} className="expense-button" />
-        </div>
+        <>
+          {/* expenses list */}
+          <main>
+            <ExpensesList expenses={expenses} />
+          </main>
+
+          {/* expense button  */}
+          <div className="add-expense" onClick={handleNewExpense}>
+            <FontAwesomeIcon icon={faCirclePlus} className="expense-button" />
+          </div>
+        </>
       )}
 
       {/* show modal if press button to add a new expense*/}
@@ -47,6 +73,7 @@ function App() {
           setModal={setModal}
           modalAnimation={modalAnimation}
           setModalAnimation={setModalAnimation}
+          saveExpense={saveExpense}
         />
       )}
     </div>

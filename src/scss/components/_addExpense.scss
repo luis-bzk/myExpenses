@@ -1,14 +1,14 @@
 @use "../base/_variables.scss"as v;
 
 .add-expense {
-  position: absolute;
+  position: fixed;
   right: 2rem;
   bottom: 2rem;
   // border-radius: 5rem;
   background-color: transparent;
 
   .expense-button {
-    color: v.$purple;
+    color: v.$fieryRose;
     font-size: 4rem;
 
     transition: .2s;
