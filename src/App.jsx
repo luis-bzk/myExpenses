@@ -1,5 +1,6 @@
 // import use state
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 // import modules
 import Header from "./components/Header";
 import Modal from "./components/Modal";
@@ -19,7 +20,17 @@ function App() {
 
   const [expenses, setExpenses] = useState([]);
 
-  // function - button to open a modal, add new expense
+  const [editExpense, setEditExpense] = useState({});
+
+  // useEffect in editExpense
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      console.log("se tiene datos a editar :)");
+      handleNewExpense();
+    }
+  }, [editExpense]);
+
+  // function - button to open a modal => add new expense
   const handleNewExpense = () => {
     setModal(true);
 
@@ -32,6 +43,7 @@ function App() {
   const saveExpense = (myExpense) => {
     myExpense.expenseId = idGenerator();
     myExpense.expenseDate = Date.now();
+
     setExpenses([...expenses, myExpense]);
 
     // close modal
@@ -39,6 +51,7 @@ function App() {
 
     setTimeout(() => {
       setModal(false);
+      setEditExpense({});
     }, 500);
   };
 
@@ -49,6 +62,7 @@ function App() {
         setBudget={setBudget}
         isValidBudget={isValidBudget}
         setIsValidBudget={setIsValidBudget}
+        expenses={expenses}
       />
 
       {/* add expense icon if set a budget */}
@@ -56,7 +70,7 @@ function App() {
         <>
           {/* expenses list */}
           <main>
-            <ExpensesList expenses={expenses} />
+            <ExpensesList expenses={expenses} setEditExpense={setEditExpense} />
           </main>
 
           {/* expense button  */}
@@ -74,6 +88,8 @@ function App() {
           modalAnimation={modalAnimation}
           setModalAnimation={setModalAnimation}
           saveExpense={saveExpense}
+          editExpense={editExpense}
+          setEditExpense={setEditExpense}
         />
       )}
     </div>

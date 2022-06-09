@@ -1,5 +1,5 @@
 // use state
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // componments
 import Message from "./Message";
 // icons
@@ -11,20 +11,32 @@ const Modal = ({
   modalAnimation,
   setModalAnimation,
   saveExpense,
+  editExpense,
+  setEditExpense,
 }) => {
-  // state
+  // states
   const [expenseName, setExpenseName] = new useState("");
   const [expenseAmount, setExpenseAmount] = new useState("");
   const [expenseCategory, setExpenseCategory] = new useState("");
 
   const [message, setMessage] = new useState(""); // for message error
 
-  // function close and delete Modal
+  // useEffect when editExpense is ready
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      setExpenseName(editExpense.expenseName);
+      setExpenseAmount(editExpense.expenseAmount);
+      setExpenseCategory(editExpense.expenseCategory);
+    }
+  }, [editExpense]);
+
+  // function close and remove Modal
   const closeModal = () => {
     setModalAnimation(false);
 
     setTimeout(() => {
       setModal(false);
+      setEditExpense({});
     }, 400);
   };
 
@@ -105,6 +117,7 @@ const Modal = ({
             <option value="light">Light</option>
             <option value="internet">Internet</option>
             <option value="entertainment">Entertainment</option>
+            <option value="clothes">Clothes</option>
             <option value="health">Health</option>
             <option value="otherExpenses">Other expenses</option>
           </select>
