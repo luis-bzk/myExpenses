@@ -42,7 +42,7 @@ const iconDictionary = {
   ),
 };
 
-const Expense = ({ expense, setEditExpense }) => {
+const Expense = ({ expense, setEditExpense, deleteExpense }) => {
   // destructuring expense object
   const {
     expenseName,
@@ -73,8 +73,9 @@ const Expense = ({ expense, setEditExpense }) => {
       <TrailingActions>
         <SwipeAction
           onClick={() => {
-            console.log("Eliminar X");
+            deleteExpense(expenseId);
           }}
+          destructive={true}
         >
           Delete
         </SwipeAction>

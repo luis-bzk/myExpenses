@@ -8,6 +8,7 @@ const Header = ({
   isValidBudget,
   setIsValidBudget,
   expenses,
+  setExpenses,
 }) => {
   return (
     <header className="header">
@@ -15,7 +16,13 @@ const Header = ({
 
       {/* see the control budget component or see add new budget */}
       {isValidBudget ? (
-        <ControlBudget budget={budget} expenses={expenses} />
+        <ControlBudget
+          budget={budget}
+          setBudget={setBudget}
+          expenses={expenses}
+          setExpenses={setExpenses}
+          setIsValidBudget={setIsValidBudget}
+        />
       ) : (
         <NewBudget
           budget={budget}

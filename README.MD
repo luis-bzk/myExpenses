@@ -1,8 +1,14 @@
-## Modal.jsx
+## Set my Expenses
 
-- show a form to add a task
-- Modal.jsx
+- Technologies
+  * SASS
+  * React
 
-* scss:
-  -- module modal
-  -- formAddBdget: formulary
+### What this app do?
+- Set your expenses in your browser, change your expenses and delete it. You can view your total money, available, 
+  what spent and more.
+
+### Try it
+You can try it in 
+>
+

@@ -1,0 +1,21 @@
+@use "../base/variables" as v;
+
+// Swipe-able
+
+.swipe-action {
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
+  color: v.$white;
+
+  &__leading {
+    background-color: v.$maxBlueGreen;
+  }
+
+  &__trailing {
+    background-color: v.$fieryRose;
+  }
+}

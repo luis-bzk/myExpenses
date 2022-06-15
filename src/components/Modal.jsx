@@ -18,25 +18,30 @@ const Modal = ({
   const [expenseName, setExpenseName] = new useState("");
   const [expenseAmount, setExpenseAmount] = new useState("");
   const [expenseCategory, setExpenseCategory] = new useState("");
+  // for edit expenses
+  const [expenseId, setExpenseId] = new useState("");
+  const [expenseDate, setExpenseDate] = new useState("");
 
   const [message, setMessage] = new useState(""); // for message error
 
-  // useEffect when editExpense is ready
+  // useEffect when editExpense is ready, change values in the form with recollected data
   useEffect(() => {
     if (Object.keys(editExpense).length > 0) {
       setExpenseName(editExpense.expenseName);
       setExpenseAmount(editExpense.expenseAmount);
       setExpenseCategory(editExpense.expenseCategory);
+      setExpenseId(editExpense.expenseId);
+      setExpenseDate(editExpense.expenseDate);
     }
   }, [editExpense]);
 
   // function close and remove Modal
   const closeModal = () => {
     setModalAnimation(false);
+    setEditExpense({});
 
     setTimeout(() => {
       setModal(false);
-      setEditExpense({});
     }, 400);
   };
 
@@ -55,7 +60,13 @@ const Modal = ({
     }
 
     // save my expense
-    saveExpense({ expenseName, expenseAmount, expenseCategory });
+    saveExpense({
+      expenseName,
+      expenseAmount,
+      expenseCategory,
+      expenseId,
+      expenseDate,
+    });
   };
 
   return (
@@ -75,7 +86,9 @@ const Modal = ({
           modalAnimation ? "animation" : "close"
         }`}
       >
-        <legend>Formulario</legend>
+        <legend>
+          {editExpense.expenseName ? "Edit expense" : "New expense"}
+        </legend>
         {/* message validation */}
         {message && <Message type="error">{message}</Message>}
 
@@ -125,7 +138,7 @@ const Modal = ({
 
         <input
           type="submit"
-          value="Add Expense"
+          value={editExpense.expenseName ? "Save changes" : "Add expense"}
           className="button-add-expense"
         />
       </form>

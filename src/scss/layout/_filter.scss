@@ -1,0 +1,50 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.expense-filter{
+  border-radius: .5rem;
+  background-color: v.$white;
+  padding: 2rem;
+  margin-bottom: 3rem;
+
+
+  .field{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    @include m.min_tablet{
+      flex-direction: row;
+      justify-content: normal;
+      gap: 0;
+    }
+
+    label{
+      font-weight: 500;
+      color: v.$darkGray;
+      font-size: 2rem;
+      @include m.min_tablet{
+        font-size: 1.8rem;
+        max-width: 20rem;
+        width: 100%;
+      }
+    }
+
+    select{
+      border: none;
+      border-radius: .5rem;
+      padding: 1rem;
+      background-color: v.$platinum;
+      width: 100%;
+      text-align: center;
+
+      @include m.min_tablet{
+        flex: 1;
+      }
+
+    }
+
+  }
+}

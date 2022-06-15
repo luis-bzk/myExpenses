@@ -27,25 +27,47 @@
   right: 0;
   top: 15rem;
 
-
   .budget-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
 
+    .danger{
+      color: v.$red;
+      span {
+        color: v.$red;
+      }
+    }
+
     span {
       color: v.$grayTrueBlue;
       font-weight: 500;
+    }
+
+    .app-reset{
+      border: none;
+      border-radius: .5rem;
+      background-color: v.$plumpPurple;
+      color: v.$white;
+      padding: 1rem;
+      transition: .2s;
+      &:hover{
+        background-color: darken(v.$plumpPurple, 5);
+        transform: scale(0.99);
+      }
     }
   }
 
   .budget-chart {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    background-color: v.$rrr;
+    align-items: center;
+    font-size: 10rem;
+
+    .chart-graphic{
+      max-width: 20rem;
+    }
+
   }
-
-
 }
